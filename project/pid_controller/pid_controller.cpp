@@ -57,5 +57,5 @@ double PID::UpdateDeltaTime(double new_delta_time) {
    * TODO: Update the delta time with new value
    */
    deltaTime = new_delta_time;
-   return deltaTime
+   return deltaTime;
 }
