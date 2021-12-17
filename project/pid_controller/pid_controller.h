@@ -17,18 +17,27 @@ public:
     /*
     * Errors
     */
+    double pError;
+    double iError;
+    double dError;
 
     /*
     * Coefficients
     */
+    double Kp;
+    double Ki;
+    double Kd;
 
     /*
     * Output limits
     */
+    double outputLimitMax;
+    double outputLimitMin;
   
     /*
     * Delta time
     */
+    double deltaTime;
 
     /*
     * Constructor
