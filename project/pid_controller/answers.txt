@@ -1,7 +1,41 @@
 // Answer the following questions:
 
 // Add the plots to your report and explain them (describe what you see)
+
+The plots can be found in the screenshots directory-
+* plot_logs.jpg - table logs
+* steering_plot.jpg - steering plot
+* throttle_plot.jpg - throttling plot
+
+In these plots, we can see a wave like noise pattern. This is because the PID controller has not been fine tuned properly.
+* The proportional term is not balanced. Hence, it is moving to and fro around the desired point.
+* Also, the integral term has not been balanced in the throttling term.
+* This gives us a room for improvement to make our trajectory better.
+* Also, we can see a strong positive co-relation between the error term and the output.
+
 // What is the effect of the PID according to the plots, how each part of the PID affects the control command?
+* The Proportional term makes the car move towards the goal.
+* However, it can overshoot and then tring to get back to the trajectory, it can overshoot again in the opposite direction.
+* This will cause a wave like pattern which can been seen in the plots.
+
+* The integral term is used to compensate for any drift throughout the process.
+* This has been tuned to some extent (tapering towards the end of the plot can be seen).
+
+* The derivative term is there to balance the overshooting caused by the proportional term.
+* This term has been better tuned for throttle than steering.
+* We can notice less noisy waves in throttle as compared to steering.
+
 // How would you design a way to automatically tune the PID parameters?
+* I tried to use the fiddle algorithm taught in the lessons.
+* However, it was unable to optimize the parameters because of the car immediately in front of us.
+* Out car was colliding with it very early reducing the speed of our car and the fiddle algorithm tried to push the car.
+* We can create a simulator with no obstructions initially.
+* Also, I think we can use gradient descent and reinforcement learning to tune the PID parameters.
+
 // PID controller is a model free controller, i.e. it does not use a model of the car. Could you explain the pros and cons of this type of controller?
+* Pros- This simplifies the calculation we can use the basic algorithm.
+* Cons- Our PID controller won't behave correctly for different speeds and turns. Example- If we have a sharp turn on high speed, a PID controller tuned for low speeds will get off track very easily.
+
 // (Optional) What would you do to improve the PID controller?
+* Tune the parameters using various approaches mentioned in the literature.
+* Also, I would try different controllers.
